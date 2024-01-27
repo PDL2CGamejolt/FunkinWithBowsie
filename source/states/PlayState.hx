@@ -536,7 +536,7 @@ class PlayState extends MusicBeatState
 		healthBar.visible = !ClientPrefs.data.hideHud;
 		healthBar.alpha = ClientPrefs.data.healthBarAlpha;
 		reloadHealthBarColors();
-		uiGroup.add(healthBar);
+		uiGroup.add(healthBar);healthBar.visible = !ClientPrefs.data.hideHud;healthBar.visible = !ClientPrefs.data.hideHud;
 
 		iconP1 = new HealthIcon(boyfriend.healthIcon, true);
 		iconP1.y = healthBar.y - 75;
@@ -558,7 +558,23 @@ class PlayState extends MusicBeatState
 		updateScore(false);
 		uiGroup.add(scoreTxt);
 
-		botplayTxt = new FlxText(400, timeBar.y + 55, FlxG.width - 800, "BOTPLAY", 32);
+		var bowVer:FlxText = new FlxText(12, FlxG.height - 64, 0, SONG.song + " | Funkin' With Bowsie v1", 12);
+		bowVer.scrollFactor.set();
+		bowVer.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		bowVer.visible = !ClientPrefs.data.hideHud;
+		uiGroup.add(bowVer);
+		var psychVer:FlxText = new FlxText(12, FlxG.height - 44, 0, "Psych Engine v0.7.3", 12);
+		psychVer.scrollFactor.set();
+		psychVer.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		psychVer.visible = !ClientPrefs.data.hideHud;
+		uiGroup.add(psychVer);
+		var fnfVer:FlxText = new FlxText(12, FlxG.height - 24, 0, "Friday Night Funkin' v" + Application.current.meta.get('version'), 12);
+		fnfVer.scrollFactor.set();
+		fnfVer.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		fnfVer.visible = !ClientPrefs.data.hideHud;
+		uiGroup.add(fnfVer);
+
+		botplayTxt = new FlxText(400, timeBar.y + 55, FlxG.width - 800, "The Bow will do it for you!", 32);
 		botplayTxt.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		botplayTxt.scrollFactor.set();
 		botplayTxt.borderSize = 1.25;
@@ -2484,6 +2500,7 @@ class PlayState extends MusicBeatState
 			antialias = !isPixelStage;
 		}
 
+		if (!cpuControlled) {
 		rating.loadGraphic(Paths.image(uiPrefix + daRating.image + uiSuffix));
 		rating.screenCenter();
 		rating.x = placement - 40;
@@ -2582,6 +2599,7 @@ class PlayState extends MusicBeatState
 			},
 			startDelay: Conductor.crochet * 0.002 / playbackRate
 		});
+	}
 	}
 
 	public var strumsBlocked:Array<Bool> = [];
