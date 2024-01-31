@@ -489,6 +489,7 @@ class PlayState extends MusicBeatState
 		timeBar.screenCenter(X);
 		timeBar.alpha = 0;
 		timeBar.visible = showTime;
+	        timeBar.setColors(FlxColor.fromRGB(0,0,0), (dad.healthColorArray[0], dad.healthColorArray[1], dad.healthColorArray[2]));
 		uiGroup.add(timeBar);
 		uiGroup.add(timeTxt);
 
