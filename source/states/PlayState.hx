@@ -560,13 +560,6 @@ class PlayState extends MusicBeatState
 		updateScore(false);
 		uiGroup.add(scoreTxt);
 
-		var judgementTxt = new FlxText(12, FlxG.height - 64, 0, "", 12);
-		judgementTxt.scrollFactor.set();
-		judgementTxt.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-		judgementTxt.visible = !ClientPrefs.data.hideHud;
-		judgementTxt.text = 'Wow!: ${sicks}\nYo!s: ${goods}\nEh...: ${bads}\nUgh!: ${shits}\nMisses: ${songMisses}';
-		uiGroup.add(judgementTxt);
-
 		var bowVer:FlxText = new FlxText(12, FlxG.height - 64, 0, SONG.song + " | Funkin' With Bowsie v1", 12);
 		bowVer.scrollFactor.set();
 		bowVer.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
@@ -1172,13 +1165,13 @@ class PlayState extends MusicBeatState
 		ratingFC = "";
 		if(songMisses == 0)
 		{
-			if (bads > 0 || shits > 0) ratingFC = 'FC';
-			else if (goods > 0) ratingFC = 'GFC';
-			else if (sicks > 0) ratingFC = 'SFC';
+			if (bads > 0 || shits > 0) ratingFC = 'Full Combo';
+			else if (goods > 0) ratingFC = 'Yo! Full Combo';
+			else if (sicks > 0) ratingFC = 'Wow! Full Combo';
 		}
 		else {
-			if (songMisses < 10) ratingFC = 'SDCB';
-			else ratingFC = 'Clear';
+			if (songMisses < 10) ratingFC = 'Single Digit Miss';
+			else ratingFC = 'Passed';
 		}
 	}
 
