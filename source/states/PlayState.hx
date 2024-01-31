@@ -560,12 +560,12 @@ class PlayState extends MusicBeatState
 		updateScore(false);
 		uiGroup.add(scoreTxt);
 
-		judgement = new FlxText(12, FlxG.height - 64, 0, "", 12);
-		judgement.scrollFactor.set();
-		judgement.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-		judgement.visible = !ClientPrefs.data.hideHud;
-		judgement.text = 'Wow!: ${sicks}\nYo!s: ${goods}\nEh...: ${bads}\nUgh!: ${shits}\nMisses: ${songMisses}'; if (ClientPrefs.judgementCounter) { add(judgementCounter); }
-		uiGroup.add(judgement);
+		var judgementTxt = new FlxText(12, FlxG.height - 64, 0, "", 12);
+		judgementTxt.scrollFactor.set();
+		judgementTxt.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		judgementTxt.visible = !ClientPrefs.data.hideHud;
+		judgementTxt.text = 'Wow!: ${sicks}\nYo!s: ${goods}\nEh...: ${bads}\nUgh!: ${shits}\nMisses: ${songMisses}';
+		uiGroup.add(judgementTxt);
 
 		var bowVer:FlxText = new FlxText(12, FlxG.height - 64, 0, SONG.song + " | Funkin' With Bowsie v1", 12);
 		bowVer.scrollFactor.set();
