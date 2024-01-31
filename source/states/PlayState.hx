@@ -175,6 +175,7 @@ class PlayState extends MusicBeatState
 
 	public var gfSpeed:Int = 1;
 	public var health(default, set):Float = 1;
+	private var curHealth:Float = 1;
 	public var combo:Int = 0;
 
 	public var healthBar:Bar;
@@ -529,15 +530,16 @@ class PlayState extends MusicBeatState
 		FlxG.worldBounds.set(0, 0, FlxG.width, FlxG.height);
 		moveCameraSection();
 
-		healthBar = new Bar(0, FlxG.height * (!ClientPrefs.data.downScroll ? 0.89 : 0.11), 'healthBar', function() return health, 0, 2);
+		healthBar = new Bar(0, FlxG.height * (!ClientPrefs.data.downScroll ? 0.89 : 0.11), 'healthBar', function() return curHealth, 0, 2);
+		curHealth = FlxMath.lerp(curHealth, health, .2 / (ClientPrefs.data.framerate / 60));
 		healthBar.screenCenter(X);
 		healthBar.leftToRight = false;
 		healthBar.scrollFactor.set();
 		healthBar.visible = !ClientPrefs.data.hideHud;
 		healthBar.alpha = ClientPrefs.data.healthBarAlpha;
 		reloadHealthBarColors();
-		uiGroup.add(healthBar);healthBar.visible = !ClientPrefs.data.hideHud;healthBar.visible = !ClientPrefs.data.hideHud;
-
+		uiGroup.add(healthBar);
+		
 		iconP1 = new HealthIcon(boyfriend.healthIcon, true);
 		iconP1.y = healthBar.y - 75;
 		iconP1.visible = !ClientPrefs.data.hideHud;
@@ -557,6 +559,13 @@ class PlayState extends MusicBeatState
 		scoreTxt.visible = !ClientPrefs.data.hideHud;
 		updateScore(false);
 		uiGroup.add(scoreTxt);
+
+		judgement = new FlxText(12, FlxG.height - 64, 0, "", 12);
+		judgement.scrollFactor.set();
+		judgement.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		judgement.visible = !ClientPrefs.data.hideHud;
+		judgement.text = 'Wow!: ${sicks}\nYo!s: ${goods}\nEh...: ${bads}\nUgh!: ${shits}\nMisses: ${songMisses}'; if (ClientPrefs.judgementCounter) { add(judgementCounter); }
+		uiGroup.add(judgement);
 
 		var bowVer:FlxText = new FlxText(12, FlxG.height - 64, 0, SONG.song + " | Funkin' With Bowsie v1", 12);
 		bowVer.scrollFactor.set();
