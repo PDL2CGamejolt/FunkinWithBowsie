@@ -1144,7 +1144,7 @@ class PlayState extends MusicBeatState
 
 		var tempScore:String = 'Score: ${songScore}'
 		+ (!instakillOnMiss ? ' | Misses: ${songMisses}' : "")
-		+ ' | Rating: ${str} | Total Notes: ' + FlxStringUtil.formatMoney(totalNotes, false);
+		+ ' | Rating: ${str}';
 		// "tempScore" variable is used to prevent another memory leak, just in case
 		// "\n" here prevents the text from being cut off by beat zooms
 		scoreTxt.text = '${tempScore}\n';
