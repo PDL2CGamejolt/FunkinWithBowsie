@@ -558,7 +558,7 @@ class PlayState extends MusicBeatState
 		updateScore(false);
 		uiGroup.add(scoreTxt);
 
-		var bowVer:FlxText = new FlxText(12, FlxG.height - 64, 0, SONG.song + " | Funkin' With Bowsie v1", 12);
+		var bowVer:FlxText = new FlxText(12, FlxG.height - 24, 0, SONG.song + " | Funkin' With Bowsie v1", 12);
 		bowVer.scrollFactor.set();
 		bowVer.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		bowVer.visible = !ClientPrefs.data.hideHud;
@@ -568,12 +568,7 @@ class PlayState extends MusicBeatState
 		psychVer.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		psychVer.visible = !ClientPrefs.data.hideHud;
 		uiGroup.add(psychVer);
-		var fnfVer:FlxText = new FlxText(12, FlxG.height - 24, 0, "Friday Night Funkin' v0.2.8", 12);
-		fnfVer.scrollFactor.set();
-		fnfVer.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-		fnfVer.visible = !ClientPrefs.data.hideHud;
-		uiGroup.add(fnfVer);
-
+	        
 		botplayTxt = new FlxText(400, timeBar.y + 55, FlxG.width - 800, "The Bow will do it for you!", 32);
 		botplayTxt.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		botplayTxt.scrollFactor.set();
@@ -1163,12 +1158,12 @@ class PlayState extends MusicBeatState
 		ratingFC = "";
 		if(songMisses == 0)
 		{
-			if (bads > 0 || shits > 0) ratingFC = 'Full Combo';
-			else if (goods > 0) ratingFC = 'Yo! Full Combo';
-			else if (sicks > 0) ratingFC = 'Wow! Full Combo';
+			if (bads > 0 || shits > 0) ratingFC = 'FC';
+			else if (goods > 0) ratingFC = 'YoFC';
+			else if (sicks > 0) ratingFC = 'WowFC';
 		}
 		else {
-			if (songMisses < 10) ratingFC = 'Single Digit Miss';
+			if (songMisses < 10) ratingFC = 'SDM';
 			else ratingFC = 'Passed';
 		}
 	}
@@ -2479,7 +2474,7 @@ class PlayState extends MusicBeatState
 		if(daRating.noteSplash && !note.noteSplashData.disabled)
 			spawnNoteSplashOnNote(note);
 
-		if(!practiceMode && !cpuControlled) {
+		if(!practiceMode) {
 			songScore += score;
 			if(!note.ratingDisabled)
 			{
