@@ -557,6 +557,10 @@ class PlayState extends MusicBeatState
 		scoreTxt.visible = !ClientPrefs.data.hideHud;
 		updateScore(false);
 		uiGroup.add(scoreTxt);
+		if(cpucontrolled)
+		{
+		scoreTxt.visible = false
+		}
 
 		var bowVer:FlxText = new FlxText(12, FlxG.height - 24, 0, SONG.song + " | Funkin' With Bowsie v1", 12);
 		bowVer.scrollFactor.set();
@@ -569,7 +573,7 @@ class PlayState extends MusicBeatState
 		psychVer.visible = !ClientPrefs.data.hideHud;
 		uiGroup.add(psychVer);
 	        
-		botplayTxt = new FlxText(400, timeBar.y + 55, FlxG.width - 800, "The Bow will do it for you!", 32);
+		botplayTxt = new FlxText(400, timeBar.y + 55, FlxG.width - 800, "The Bow will do it for you! Notes Hit: ${songHits}", 32);
 		botplayTxt.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		botplayTxt.scrollFactor.set();
 		botplayTxt.borderSize = 1.25;
