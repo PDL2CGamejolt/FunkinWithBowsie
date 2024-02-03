@@ -559,7 +559,7 @@ class PlayState extends MusicBeatState
 		uiGroup.add(scoreTxt);
 		if(cpucontrolled)
 		{
-		scoreTxt.visible = false
+		scoreTxt.visible = false;
 		}
 
 		var bowVer:FlxText = new FlxText(12, FlxG.height - 24, 0, SONG.song + " | Funkin' With Bowsie v1", 12);
