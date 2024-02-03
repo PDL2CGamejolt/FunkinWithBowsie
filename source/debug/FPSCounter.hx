@@ -36,7 +36,7 @@ class FPSCounter extends TextField
 		defaultTextFormat = new TextFormat(openfl.utils.Assets.getFont("assets/fonts/vcr.ttf").fontName, 14, color);
 		autoSize = RIGHT;
 		multiline = true;
-		text = "Frames Per Second: ";
+		text = "FPS: ";
 
 		times = [];
 	}
@@ -62,8 +62,8 @@ class FPSCounter extends TextField
 	}
 
 	public dynamic function updateText():Void { // so people can override it in hscript
-		text = 'Frames Per Second: ${currentFPS}'
-		+ '\nMemory in MB: ${flixel.util.FlxStringUtil.formatBytes(memoryMegas)}';
+		text = 'FPS: ${currentFPS}'
+		+ '\nMemory Taken: ${flixel.util.FlxStringUtil.formatBytes(memoryMegas)}';
 
 		textColor = 0xFFFFFFFF;
 		if (currentFPS < FlxG.drawFramerate * 0.5)
