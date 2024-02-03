@@ -557,10 +557,6 @@ class PlayState extends MusicBeatState
 		scoreTxt.visible = !ClientPrefs.data.hideHud;
 		updateScore(false);
 		uiGroup.add(scoreTxt);
-		if(cpuControlled)
-		{
-		scoreTxt.visible = false;
-		}
 
 		var bowVer:FlxText = new FlxText(12, FlxG.height - 24, 0, SONG.song + " | Funkin' With Bowsie v1", 12);
 		bowVer.scrollFactor.set();
@@ -573,7 +569,7 @@ class PlayState extends MusicBeatState
 		psychVer.visible = !ClientPrefs.data.hideHud;
 		uiGroup.add(psychVer);
 	        
-		botplayTxt = new FlxText(400, timeBar.y + 55, FlxG.width - 800, "The Bow will do it for you! Notes Hit: ${songHits}", 32);
+		botplayTxt = new FlxText(400, timeBar.y + 55, FlxG.width - 800, "The Bow will do it for you!", 32);
 		botplayTxt.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		botplayTxt.scrollFactor.set();
 		botplayTxt.borderSize = 1.25;
@@ -1141,7 +1137,7 @@ class PlayState extends MusicBeatState
 
 		var tempScore:String = 'Score: ${songScore}'
 		+ (!instakillOnMiss ? ' | Misses: ${songMisses}' : "")
-		+ ' | Rating: ${str} | Total Notes: ${songHits}';
+		+ ' | Rating: ${str}';
 		// "tempScore" variable is used to prevent another memory leak, just in case
 		// "\n" here prevents the text from being cut off by beat zooms
 		scoreTxt.text = '${tempScore}\n';
@@ -1180,7 +1176,7 @@ class PlayState extends MusicBeatState
 			scoreTxtTween.cancel();
 
 		scoreTxt.scale.x = 1.2;
-		scoreTxt.scale.y = 1.075;
+		scoreTxt.scale.y = 0.9;
 		scoreTxtTween = FlxTween.tween(scoreTxt.scale, {x: 1, y: 1}, 0.1, {
 			onComplete: function(twn:FlxTween) {
 				scoreTxtTween = null;
