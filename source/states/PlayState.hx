@@ -557,7 +557,6 @@ class PlayState extends MusicBeatState
 		scoreTxt.visible = !ClientPrefs.data.hideHud;
 		updateScore(false);
 		uiGroup.add(scoreTxt);
-		var otherScore:String = 'Notes Hit: ${songHits} | Combo: ${combo}';
 		otherscoreTxt = new FlxText(0, healthBar.y + 30, FlxG.width, "", 20);
 		otherscoreTxt.setFormat(Paths.font("vcr.ttf"), 20, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		otherscoreTxt.scrollFactor.set();
@@ -1645,6 +1644,7 @@ class PlayState extends MusicBeatState
 
 	override public function update(elapsed:Float)
 	{
+		var otherScore:String = 'Notes Hit: ${songHits} | Combo: ${combo}';
 		otherscoreTxt.text = '${otherScore}\n';
 		if(!inCutscene && !paused && !freezeCamera) {
 			FlxG.camera.followLerp = 2.4 * cameraSpeed * playbackRate;
