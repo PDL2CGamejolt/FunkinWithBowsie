@@ -558,6 +558,21 @@ class PlayState extends MusicBeatState
 		updateScore(false);
 		uiGroup.add(scoreTxt);
 
+		var notehitstxt:FlxText = new FlxText(12, FlxG.height + 84, 0, "Notes Hit: ${songHits}", 12);
+		notehitstxt.scrollFactor.set();
+		notehitstxt.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		notehitstxt.visible = !ClientPrefs.data.hideHud;
+		uiGroup.add(notehitstxt);
+		var combotxt:FlxText = new FlxText(12, FlxG.height + 44, 0, "Combo: ${combo}", 12);
+		combotxt.scrollFactor.set();
+		combotxt.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		combotxt.visible = !ClientPrefs.data.hideHud;
+		uiGroup.add(combotxt);
+		var healthtxt:FlxText = new FlxText(12, FlxG.height + 24, 0, "Health: ${health}%", 12);
+		healthtxt.scrollFactor.set();
+		healthtxt.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		healthtxt.visible = !ClientPrefs.data.hideHud;
+		uiGroup.add(healthtxt);
 		var bowVer:FlxText = new FlxText(12, FlxG.height - 24, 0, SONG.song + " | Funkin' With Bowsie v1", 12);
 		bowVer.scrollFactor.set();
 		bowVer.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
@@ -1226,7 +1241,7 @@ class PlayState extends MusicBeatState
 		@:privateAccess
 		FlxG.sound.playMusic(inst._sound, 1, false);
 		#if FLX_PITCH FlxG.sound.music.pitch = playbackRate; #end
-		FlxG.sound.music.onComplete = () -> finishSong;
+		FlxG.sound.music.onComplete = finishSong.bind();
 		vocals.play();
 		opponentVocals.play();
 
@@ -2474,7 +2489,7 @@ class PlayState extends MusicBeatState
 		if(daRating.noteSplash && !note.noteSplashData.disabled)
 			spawnNoteSplashOnNote(note);
 
-		if(!practiceMode) {
+		if(!practiceMode && !cpuControlled) {
 			songScore += score;
 			if(!note.ratingDisabled)
 			{
