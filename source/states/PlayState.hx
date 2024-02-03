@@ -558,7 +558,7 @@ class PlayState extends MusicBeatState
 		scoreTxt.visible = !ClientPrefs.data.hideHud;
 		updateScore(false);
 		uiGroup.add(scoreTxt);
-		otherscoreTxt = new FlxText(0, healthBar.y + 30, FlxG.width, "Notes Hit: ${songHits} | Combo: ${combo}", 20);
+		otherscoreTxt = new FlxText(0, healthBar.y + 30, FlxG.width, "Notes Hit: ' + songHits + ' | Combo: ' + combo, 20);
 		otherscoreTxt.setFormat(Paths.font("vcr.ttf"), 20, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		otherscoreTxt.scrollFactor.set();
 		otherscoreTxt.borderSize = 1.25;
