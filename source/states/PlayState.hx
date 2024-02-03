@@ -199,7 +199,6 @@ class PlayState extends MusicBeatState
 	public var cpuControlled:Bool = false;
 	public var practiceMode:Bool = false;
 
-	public var botplaySine:Float = 0;
 	public var botplayTxt:FlxText;
 
 	public var iconP1:HealthIcon;
@@ -558,11 +557,13 @@ class PlayState extends MusicBeatState
 		scoreTxt.visible = !ClientPrefs.data.hideHud;
 		updateScore(false);
 		uiGroup.add(scoreTxt);
-		otherscoreTxt = new FlxText(0, healthBar.y + 30, FlxG.width, "Notes Hit: ' + songHits + ' | Combo: ' + combo, 20);
+		var otherScore:String = 'Notes Hit: ${songHits} | Combo: ${combo}';
+		otherscoreTxt = new FlxText(0, healthBar.y + 30, FlxG.width, "", 20);
 		otherscoreTxt.setFormat(Paths.font("vcr.ttf"), 20, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		otherscoreTxt.scrollFactor.set();
 		otherscoreTxt.borderSize = 1.25;
 		otherscoreTxt.visible = !ClientPrefs.data.hideHud;
+
 		uiGroup.add(otherscoreTxt);
 
 		var bowVer:FlxText = new FlxText(12, FlxG.height - 24, 0, SONG.song + " | Funkin' With Bowsie v1", 12);
@@ -1644,6 +1645,7 @@ class PlayState extends MusicBeatState
 
 	override public function update(elapsed:Float)
 	{
+		otherscoreTxt.text = '${otherScore}\n';
 		if(!inCutscene && !paused && !freezeCamera) {
 			FlxG.camera.followLerp = 2.4 * cameraSpeed * playbackRate;
 			if(!startingSong && !endingSong && boyfriend.getAnimationName().startsWith('idle')) {
@@ -1664,8 +1666,7 @@ class PlayState extends MusicBeatState
 		setOnScripts('curDecBeat', curDecBeat);
 
 		if(botplayTxt != null && botplayTxt.visible) {
-			botplaySine += 180 * elapsed;
-			botplayTxt.alpha = 1 - Math.sin((Math.PI * botplaySine) / 180);
+			botplayTxt.alpha = 1;
 		}
 
 		if (controls.PAUSE && startedCountdown && canPause)
