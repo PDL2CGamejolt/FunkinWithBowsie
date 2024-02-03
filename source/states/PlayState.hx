@@ -550,29 +550,20 @@ class PlayState extends MusicBeatState
 		iconP2.alpha = ClientPrefs.data.healthBarAlpha;
 		uiGroup.add(iconP2);
 
-		scoreTxt = new FlxText(0, healthBar.y + 40, FlxG.width, "", 20);
+		scoreTxt = new FlxText(0, healthBar.y + 50, FlxG.width, "", 20);
 		scoreTxt.setFormat(Paths.font("vcr.ttf"), 20, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		scoreTxt.scrollFactor.set();
 		scoreTxt.borderSize = 1.25;
 		scoreTxt.visible = !ClientPrefs.data.hideHud;
 		updateScore(false);
 		uiGroup.add(scoreTxt);
+		otherscoreTxt = new FlxText(0, healthBar.y + 30, FlxG.width, "Notes Hit: ${songHits} | Combo: ${combo}", 20);
+		otherscoreTxt.setFormat(Paths.font("vcr.ttf"), 20, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		otherscoreTxt.scrollFactor.set();
+		otherscoreTxt.borderSize = 1.25;
+		otherscoreTxt.visible = !ClientPrefs.data.hideHud;
+		uiGroup.add(otherscoreTxt);
 
-		var notehitstxt:FlxText = new FlxText(12, FlxG.height + 84, 0, "Notes Hit: ${songHits}", 12);
-		notehitstxt.scrollFactor.set();
-		notehitstxt.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-		notehitstxt.visible = !ClientPrefs.data.hideHud;
-		uiGroup.add(notehitstxt);
-		var combotxt:FlxText = new FlxText(12, FlxG.height + 44, 0, "Combo: ${combo}", 12);
-		combotxt.scrollFactor.set();
-		combotxt.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-		combotxt.visible = !ClientPrefs.data.hideHud;
-		uiGroup.add(combotxt);
-		var healthtxt:FlxText = new FlxText(12, FlxG.height + 24, 0, "Health: ${health}%", 12);
-		healthtxt.scrollFactor.set();
-		healthtxt.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-		healthtxt.visible = !ClientPrefs.data.hideHud;
-		uiGroup.add(healthtxt);
 		var bowVer:FlxText = new FlxText(12, FlxG.height - 24, 0, SONG.song + " | Funkin' With Bowsie v1", 12);
 		bowVer.scrollFactor.set();
 		bowVer.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
