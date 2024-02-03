@@ -557,7 +557,7 @@ class PlayState extends MusicBeatState
 		scoreTxt.visible = !ClientPrefs.data.hideHud;
 		updateScore(false);
 		uiGroup.add(scoreTxt);
-		if(cpucontrolled)
+		if(cpuControlled)
 		{
 		scoreTxt.visible = false;
 		}
