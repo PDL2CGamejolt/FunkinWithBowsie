@@ -570,7 +570,7 @@ class PlayState extends MusicBeatState
 		bowVer.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		bowVer.visible = !ClientPrefs.data.hideHud;
 		uiGroup.add(bowVer);
-		var psychVer:FlxText = new FlxText(12, FlxG.height - 44, 0, "Psych Engine v0.7.3", 12);
+		var psychVer:FlxText = new FlxText(12, FlxG.height - 44, 0, "Bowsie (Psych) Engine v0.7.3", 12);
 		psychVer.scrollFactor.set();
 		psychVer.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		psychVer.visible = !ClientPrefs.data.hideHud;
