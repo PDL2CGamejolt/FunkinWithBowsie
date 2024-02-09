@@ -91,7 +91,7 @@ class MainMenuState extends MusicBeatState
 		bowVer.scrollFactor.set();
 		bowVer.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(bowVer);
-		var psychVer:FlxText = new FlxText(12, FlxG.height - 44, 0, "Psych Engine v" + psychEngineVersion, 12);
+		var psychVer:FlxText = new FlxText(12, FlxG.height - 44, 0, "Bowsie (Psych) Engine v" + psychEngineVersion, 12);
 		psychVer.scrollFactor.set();
 		psychVer.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(psychVer);
