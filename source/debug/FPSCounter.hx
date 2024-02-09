@@ -63,7 +63,8 @@ class FPSCounter extends TextField
 
 	public dynamic function updateText():Void { // so people can override it in hscript
 		text = 'FPS: ${currentFPS}'
-		+ '\nMemory Taken: ${flixel.util.FlxStringUtil.formatBytes(memoryMegas)}';
+		+ '\nMemory Taken: ${flixel.util.FlxStringUtil.formatBytes(memoryMegas)}'
+		+ '\nFunkin\' with Bowsie V1';
 
 		textColor = 0xFFFFFFFF;
 		if (currentFPS < FlxG.drawFramerate * 0.5)
