@@ -90,7 +90,7 @@ class PlayState extends MusicBeatState
 		['Into It', 0.8], //From 70% to 79%
 		['Yo.', 0.9], //From 80% to 89%
 		['WOW!', 1], //From 90% to 99%
-		['OUT-BOWED!', 1] //The value on this one isn't used actually, since Perfect is always "1"
+		['Take a bow, my friend.', 1] //The value on this one isn't used actually, since Perfect is always "1"
 	];
 
 	//event variables
